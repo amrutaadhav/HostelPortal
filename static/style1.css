@@ -1,0 +1,267 @@
+
+
+/* ---------- Base ---------- */
+:root {
+  --primary: #4f46e5;
+  --primary-light: #6366f1;
+  --secondary: #f43f5e;
+  --bg: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.75); /* Slight transparency for glass effect */
+  --text: #1e293b;
+  --text-light: #475569;
+  --border: #e2e8f0;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --radius: 12px;
+  --shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* ---------- Background with Blur ---------- */
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url("bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  position: relative;
+  z-index: 1; 
+}
+
+/* ---------- Header ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(79, 70, 229, 0.85);
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(5px);
+}
+
+header h1 {
+  font-size: 1.6rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav button {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.nav button:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255,255,255,0.25);
+}
+
+.nav button.active {
+  background: var(--secondary);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(15px);
+  transition: transform 0.2s, background 0.3s;
+  margin-top:20px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.card h3 {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ---------- Grid Layout ---------- */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.cols-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* ---------- Forms ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+input, select {
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+  background: rgba(255,255,255,0.9);
+}
+
+input:focus, select:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+/* ---------- Tables ---------- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.table th {
+  background: var(--primary);
+  color: #fff;
+}
+
+.table tr:hover {
+  background: rgba(241, 245, 249, 0.8);
+}
+
+/* ---------- Stats ---------- */
+.stat {
+  text-align: center;
+}
+
+.stat .small {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.stat .num {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--success);
+}
+
+/* ---------- Footer ---------- */
+.footer-note {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .wrap {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+}
+
+/* ---------- Optional Icons ---------- */
+button::before {
+  content: "🏠";
+  display: inline-block;
+  margin-right: 6px;
+  opacity: 0.8;
+}
+
+button[data-view="students"]::before { content: "🎓"; }
+button[data-view="rooms"]::before { content: "🛏️"; }
+button[data-view="bookings"]::before { content: "📅"; }
+button[data-view="payments"]::before { content: "💰"; }
+
+/* Hover glow */
+button:hover {
+  box-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+/* ---------- Scrollbar Styling ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}

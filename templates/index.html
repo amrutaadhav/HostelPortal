@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hostel Management system...</title>
+  <link rel="stylesheet" href="/static/style1.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>HostelPortal</h1>
+      <div class="nav" role="navigation" aria-label="Main">
+        <button class="active" data-view="dashboard">Dashboard</button>
+        <button data-view="students">Students</button>
+        <button data-view="rooms">Rooms</button>
+        <button data-view="bookings">Bookings</button>
+        <button data-view="payments">Payments</button>
+      </div>
+    </header>
+
+    <main id="app">
+      <!-- Dashboard -->
+      <section id="view-dashboard" class="view">
+        <div class="grid cols-3" style="margin-bottom:12px">
+          <div class="card stat"><div class="small">Total students</div><div id="stat-students" class="num">0</div></div>
+          <div class="card stat"><div class="small">Total rooms</div><div id="stat-rooms" class="num">0</div></div>
+          <div class="card stat"><div class="small">Active bookings</div><div id="stat-bookings" class="num">0</div></div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Recent bookings</h3>
+          <div id="recent-bookings" style="display:grid;gap:8px"></div>
+        </div>
+      </section>
+
+      <!-- Students -->
+      <section id="view-students" class="view" style="display:none">
+        <div class="grid cols-2">
+          <div class="card">
+            <h3 style="margin-top:0">Add student</h3>
+            <form id="form-student">
+              <label for="stu-name">Name</label>
+              <input id="stu-name" required placeholder="Full name" />
+              <label for="stu-email">Email</label>
+              <input id="stu-email" placeholder="email@example.com" />
+              <label for="stu-phone">Phone</label>
+              <input id="stu-phone" placeholder="+91 9XXXXXXXXX" />
+              <button class="btn primary" type="submit">Add student</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">Students</h3>
+            <div id="students-list" style="display:grid;gap:8px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rooms -->
+      <section id="view-rooms" class="view" style="display:none">
+        <div class="grid cols-2">
+          <div class="card">
+            <h3 style="margin-top:0">Add room</h3>
+            <form id="form-room">
+              <label for="room-number">Room number</label>
+              <input id="room-number" required placeholder="101" />
+              <label for="room-type">Type</label>
+              <select id="room-type"><option>Single</option><option>Double</option><option>Triple</option></select>
+              <label for="room-price">Price (monthly)</label>
+              <input id="room-price" type="number" min="0" placeholder="5000"/>
+              <label for="room-capacity">Capacity</label>
+              <input id="room-capacity" type="number" min="1" value="1"/>
+              <button class="btn primary" type="submit">Add room</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">Rooms</h3>
+            <div id="rooms-list" style="display:grid;gap:8px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bookings -->
+      <section id="view-bookings" class="view" style="display:none">
+        <div class="grid cols-2">
+          <div class="card">
+            <h3 style="margin-top:0">New booking</h3>
+            <form id="form-booking">
+              <label for="bk-student">Student</label>
+              <select id="bk-student"><option value="">Select</option></select>
+              <label for="bk-room">Room</label>
+              <select id="bk-room"><option value="">Select</option></select>
+              <label for="bk-from">From</label>
+              <input id="bk-from" type="date" />
+              <label for="bk-to">To</label>
+              <input id="bk-to" type="date" />
+              <button class="btn primary" type="submit">Create booking</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">Active bookings</h3>
+            <div id="bookings-list" style="display:grid;gap:8px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Payments -->
+      <section id="view-payments" class="view" style="display:none">
+        <div class="card">
+          <h3 style="margin-top:0">Payments</h3>
+          <table class="table" id="payments-table">
+            <thead><tr><th>Student</th><th>Room</th><th>Amount</th><th>Date</th><th>Action</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="footer-note"></div>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
